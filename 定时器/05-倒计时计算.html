@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <style>
+        *{
+            margin: 0 auto;
+        }
+        #box{
+            margin: 100px auto;
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+<script>
+    window.onload = function () {
+        var box = document.getElementById("box");
+        //1.将来时间
+        var nextDate = new Date("2018/8/8 20:00:00");
+        setInterval(function () {
+            //2.当前时间
+            var currentDate = new Date();
+            var currentTime = currentDate.getTime();
+
+            var nextTime = nextDate.getTime();
+            //3.剩余时间戳
+            var flag = nextTime-currentTime;
+            // console.log(flag);
+            //4.将毫秒更改为秒
+            flag = size( parseInt(flag/1000) );
+            var day = size( parseInt(flag/3600/24) );
+            var hour = size( parseInt(flag/3600%24) );
+            var minutes = size( parseInt(flag/60%60) );
+            var second = size( parseInt(flag%60) );
+            box.innerText = "距离2018/8/8/20倒计时还有"+day+"天"+hour+"时"+minutes+"分"+second+"秒";
+        },1000);
+
+        function size(num) {
+            return num>=10? num:'0'+num;
+        }
+    };
+</script>
+</body>
+</html>

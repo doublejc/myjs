@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0 auto;
+        }
+        #box{
+            width: 450px;
+            height:450px;
+            border: 1px solid red;
+            position: relative;
+            box-shadow: 0 0 2px #cccccc;
+            padding: 20px;
+        }
+        .title{
+            text-align: center;
+            width: 400px;
+            height: 40px;
+            font-size: 30px;
+            font-family: "仿宋";
+            border-bottom: 2px solid red;
+        }
+        .footer{
+            text-align: center;
+            width: 450px;
+            height: 40px;
+            border: 1px solid blue ;
+            position: absolute;
+            top: 92%;
+            left: 0px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="title">歌曲排行榜</div>
+        <div class="check">
+            <input type="checkbox" checked="checked">1</input><br>
+            <input type="checkbox" >2</input><br>
+            <input type="checkbox" >3</input><br>
+            <input type="checkbox" >4</input><br>
+            <input type="checkbox" >5</input><br>
+            <input type="checkbox" >6</input><br>
+
+
+
+        </div>
+        <div class="footer">
+            <button>全选</button>
+            <button>取消全部</button>
+            <button>反选</button>
+        </div>
+    </div>
+    <script>
+        window.onload = function(){
+            var box = document.getElementById("box");
+            var input = box.getElementsByTagName("input");
+            console.log(input);
+            var allBtn = box.getElementsByTagName("button")[0];
+            var cancelBtn = box.getElementsByTagName("button")[1];
+            var revesalBtn = box.getElementsByTagName("button")[2];
+            //全选按钮点击事件
+            allBtn.onclick = function (){
+                for(var i = 0 ;i<input.length;i++)
+                    input[i].checked = true;
+            };
+            //取消全部按钮点击事件
+            cancelBtn.onclick = function (){
+                for(var i = 0 ;i<input.length;i++)
+                    input[i].checked = false;
+            };
+            //反选按钮点击事件
+            revesalBtn.onclick = function(){
+                for(var i=0 ;i<input.length;i++)
+                    input[i].checked = !input[i].checked;
+            };
+        };
+    </script>
+</body>
+</html>

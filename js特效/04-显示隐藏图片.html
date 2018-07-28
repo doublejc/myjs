@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>扫描二维码</title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+		*{
+			margin:0 auto;
+			padding: 0;
+			list-style: none;
+		}
+		#e_coder{
+			position: fixed;
+			top: 40%;
+			left:0;
+			background: url("images/img_scan.png") no-repeat;
+			width:64px;
+			height:64px;
+			cursor: pointer;
+		}
+		#e_app{
+			position: absolute;
+			left: 64px;
+			top:-50%;
+			display: none;
+
+		}
+		#e_app img{
+			width: 128px;
+			height: 128px;
+		}
+	</style>
+</head>
+<body>
+	<div id="e_coder">
+		<div id="e_app">
+			<img src="images/img_joe.jpg" />
+		</div>
+	</div>
+	<script type="text/javascript">
+		window.onload = function(){
+			var e_coder = document.getElementById("e_coder");
+			console.log(e_coder);
+			var e_app  = document.getElementById("e_app");
+
+			//鼠标放上扫描的图片上的事件
+			e_coder.onmousemove = function(){
+				//1.1更改背景图片
+				this.style.background = 'url("images/img_scanSelect.png") no-repeat';
+				//1.2显示图片
+				e_app.style.display = "block";
+			};
+
+			//鼠标离开事件
+			e_coder.onmouseout = function(){
+				//2.1更改背景图片
+				this.style.background = 'url("images/img_scan.png") no-repeat';
+				//2.2显示图片
+				e_app.style.display = "none";
+			};
+
+		}
+	</script>
+</body>
+</html>

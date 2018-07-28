@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js改变背景图片</title>
+    <style>
+        *{
+            margin: 0 auto;
+            list-style: none;
+            vertical-align: top;
+        }
+        body{
+            background:url("images/img_01.png") no-repeat;
+            /*background-size: cover;*/
+        }
+
+        #box{
+            width: 100%;
+            heigth:200px;
+            background-color: rgba(255,255,255,0.5);
+
+        }
+        #ul-list{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            padding: 10px 0px;
+        }
+        #ul-list li{
+            cursor: pointer;
+        }
+
+        #ul-list li img{
+            width: 180px;
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="ul-list">
+            <li><img src="images/img_01.png" alt=""></li>
+            <li><img src="images/img_02.png" alt=""></li>
+            <li><img src="images/img_03.png" alt=""></li>
+            <li><img src="images/img_04.png" alt=""></li>
+            <li><img src="images/img_05.png" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        window.onload = function(){
+            var box = document.getElementById("box");
+            var allList = box.getElementsByTagName("li");
+
+            for(var i = 0 ; i<allList.length;i++ ){
+                // var sList = allList[i];
+                // sList.index = i+1;
+                //
+                // sList.onclick = function () {
+                //     document.body.style.background = 'url("images/img_0'+this.index+'.png") no-repeat';
+                //     console.log(sList.index);
+                // };
+
+                /*采用闭包的方法，解决同步异步问题*/
+                (
+                    function (i) {
+                        allList[i].onclick = function () {
+                            document.body.style.background = 'url("images/img_0'+(i+1)+'.png") no-repeat';
+                            console.log(i);
+                        };
+                    }
+                )(i);
+            }
+
+
+        };
+    </script>
+</body>
+</html>

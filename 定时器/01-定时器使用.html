@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+</head>
+<body>
+<script>
+    //1.1直接写执行代码
+    //window.setInterval("console.log('haha')",1000)
+    //1.2匿名函数
+    setInterval(function () {
+        console.log("haha");
+    },1000);
+    //1.3调用函数
+    setInterval(func,1000);
+    function func() {
+        console.log("haha");
+    }
+</script>
+</body>
+</html>

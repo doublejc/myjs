@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输入框聚焦问题</title>
+    <style>
+        *{
+            margin: 0 auto;
+
+        }
+        #box{
+
+        }
+        #tips{
+            background: url("images/一般提示.png") no-repeat;
+            padding-left: 20px;
+            margin-top: 5px;
+            font-size: 15px;
+            color: #cccccc;
+        }
+        .right{
+            background: url("images/正确提示.png") no-repeat;
+            padding-left: 20px;
+            font-size: 15px;
+            color: green;
+        }
+        .error{
+            background: url("images/错误提示.png") no-repeat;
+            padding-left: 20px;
+            font-size: 15px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span>成绩:</span>
+        <input type="text" placeholder="输入成绩"/>
+        <span id="tips" class="right">输入成绩</span>
+    </div>
+    <script>
+        window.onload = function(){
+            function $(id){
+                return typeof id === "string" ? document.getElementById(id) : "";
+            }
+            var box = $("box");
+            console.log(box);
+            // var box = document.getElementById("box");
+            var input =box.getElementsByTagName("input");
+            var tips = document.getElementById("tips");
+            console.log(tips);
+            input.onfocus = function(){
+
+            };
+            input.onblur = function(){
+                if(isNaN(value)){
+
+                    tips.className = "error";
+                    tips.innerText ="请输入正确数字";
+
+                }
+            }
+
+
+        }
+    </script>
+</body>
+</html>

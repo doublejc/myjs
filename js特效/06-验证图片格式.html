@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证图片格式</title>
+</head>
+<body>
+<label >选择图片</label>
+<input type="file" id="file">
+<script>
+    window.onload = function () {
+        var  file = document.getElementById("file");
+
+        file.onchange = function () {
+            //1.1获取文件路径
+            var path = this.value;
+            //1.2截取文件后缀名
+            var strfix = path.substr(path.lastIndexOf("."));
+            console.log(strfix);
+            //1.3将后缀名小写化
+            var lowfix = strfix.toLowerCase();
+            //1.5判断
+            if(lowfix != (".png" || "jpg"))
+                alert("文件格式错误");
+
+        };
+
+    }
+</script>
+</body>
+</html>

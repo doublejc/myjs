@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抽取</title>
+    <style>
+        *{
+            margin: 0 auto;
+            padding: 0;
+        }
+        #box{
+            margin: 100px auto;
+            text-align: center;
+        }
+        #display{
+
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <button>开始</button>
+    <button>结束</button>
+    <div id="display"></div>
+    <script>
+        window.onload = function () {
+            var start = document.getElementsByTagName("button")[0];
+            var over = document.getElementsByTagName("button")[1];
+            var display = document.getElementById("display");
+            var nameArray = new Array("陈一","陈二","陈三","陈四");
+            var time = null;
+            start.onclick = function () {
+                //点击开始时间，开始定时循环
+                clearInterval(time);
+                time = setInterval(function () {
+                    var temp = parseInt(Math.random()*nameArray.length);
+                    display.innerText = nameArray[temp];
+                    console.log(nameArray[temp]);
+                },50);
+
+
+
+            };
+            //结束，清除定时器
+            over.onclick = function () {
+                clearInterval(time);
+            }
+        };
+    </script>
+</div>
+</body>
+</html>

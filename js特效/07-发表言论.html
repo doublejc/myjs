@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发表言论</title>
+    <style>
+        *{
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            width: 800px;
+            border: 1px solid gainsboro;
+            margin: 100px auto;
+            padding: 20px;
+
+        }
+        #my-textarea{
+            width: 80%;
+            height: 120px;
+        }
+        .box-top{
+            margin-top: 20px;
+        }
+        #ul{
+            margin: 0 80px;
+
+        }
+        #ul li{
+            border-bottom: 1px solid gray ;
+            color: red;
+
+        }
+        #ul li a{
+            float :right;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="box-top">
+            <label >发表评论</label>
+            <textarea  id="my-textarea" cols="60" rows="40"></textarea>
+
+            <button id="btn">发表</button>
+        </div>
+        
+        
+        <ul id="ul">
+            <li></li>
+        </ul>
+        
+    </div>
+    <script>
+        window.onload = function () {
+            var box = $("box");
+            var btn = $("btn");
+            btn.onclick = function(){
+                //1.1获取用户获取输入内容
+                var content = $("my-textarea").value;
+                //
+                // console.log(content);
+                if(content === ""){
+                    alert("内容不能为空");
+                    return;//结束
+                }
+
+                //1.3创建li标签，放入ul
+                var li = document.createElement("li");
+                li.innerHTML = content +"<a href='#'>删除</a>";
+                //$("ul").appendChild(li);//将发表内容增加到ul
+                $("ul").insertBefore(li,$('ul').children[0]);
+                //1.4发表完后需要清除输入框内容
+                $("my-textarea").value = "";
+
+                //1.5删除评论
+                var as = $("ul").getElementsByTagName("a");
+                for (var i = 0 ; i<as.length;i++){
+                    var a = as[i];
+                    a.onclick = function () {
+                      //alert(1) ;
+                      //1.6获取父标签
+                        this.parentNode.remove();
+                    };
+                }
+
+
+
+            }
+        };
+
+        function $(id) {
+            return typeof id === "string" ? document.getElementById(id) : null;
+
+        }
+    </script>
+</body>
+</html>

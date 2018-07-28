@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0 auto;
+            padding: 0;
+        }
+        #box{
+            font-size: 30px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        #image{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        5
+    </div>
+    <img id="image" src="images/img_01.png">
+    <script>
+        window.onload = function(){
+            //1.1获取时间文本
+            var box = $("box");
+            //1.2设置定时器事件
+            var time = setInterval(function () {
+                //1.2.1更改文本
+                box.innerText -=1;
+                //1.2.2如果数字等于0，照片显示
+                if (box.innerText === "0"){
+                    clearInterval(time);
+                    box.style.display= 'none';
+                    $("image").style.display = "block";
+                }
+            },1000);
+
+        };
+        function $(id) {
+            return typeof id === "string" ? document.getElementById(id):null;
+        }
+
+    </script>
+</body>
+</html>

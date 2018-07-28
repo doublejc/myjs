@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>js轮播图</title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+		*{
+			margin: 0 auto;
+		}
+		/*轮播图内容*/
+		.img-content{
+			width: 980px;
+			height: 450px;
+			border: 1px solid red;
+
+		}
+		/*设置图片大小*/
+		img{
+			width: 980px;
+			height: 450px;
+		}
+		.btn-area{
+			margin-top: 30px;
+		}
+	</style>
+
+<body>
+	<div class="img-content">
+		<img src="images/img01.jpg">
+	</div>
+	<div class="btn-area" align="center">
+		<button id="next">下一张</button>
+		<button id="previous">上一张</button>
+	</div>
+	<script type="text/javascript">
+		window.onload = function(){
+			var img = document.getElementsByTagName("img")[0];
+			var previous = document.getElementById("previous");
+			var next = document.getElementById("next");
+			var maxIndex = 3 ,minIndex = 1 ,nowIndex = 1;
+			//点击前一张事件
+			previous.onclick = function(){
+				if(nowIndex === minIndex){
+					//如果已经是第一张图片，则换到最后
+					nowIndex = maxIndex;
+				}
+				else{
+					nowIndex--;	
+				}							
+				img.setAttribute("src", "images/img0"+nowIndex+".jpg");
+
+			};
+			//点击后一张事件
+			next.onclick = function(){
+				if(nowIndex === maxIndex){
+					//如果已经是最后图片，则换到第一张
+					nowIndex = minIndex;
+				}
+				else
+				{
+					nowIndex++;
+				}				
+				img.setAttribute("src", "images/img0"+nowIndex+".jpg");
+
+			};
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--加上以上一句话 -->
+</head>
+<body>
+<!--虚拟DOM, vue-app是根容器-->
+<div id="vue-app">
+<p>{{message}}</p>
+    <p>{{sayHello("afternoon")}}</p>
+    <!--属性绑定-->
+    <a v-bind:href="website">baidu</a>
+
+</div>
+<script src="index.js"></script>
+</body>
+</html>
